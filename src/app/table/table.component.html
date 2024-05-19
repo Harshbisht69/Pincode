@@ -1,0 +1,42 @@
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Gender</th>
+      <th>Hobby</th>
+      <th>State Name</th>
+      <th>District Name</th>
+      <th>City Name</th>
+      <th>Pincode</th>
+      <th>Active</th>
+      <th>Update</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of tableData">
+      <td>{{item.Id}}</td>
+      <td>{{item.Name}}</td>
+      <td>{{item.age}}</td>
+      <td>{{item.Gender}}</td>
+      <td>{{item.Hobby}}</td>
+      <td>{{item.StateName}}</td>
+      <td>{{item.DistrictName}}</td>
+      <td>{{item.CityName}}</td>
+      <td>{{item.Pincode}}</td>
+      <td>{{item.Active}}</td>
+
+      <td *ngIf="item.Active == 'Y'"><button (click)="onClick(item)">Update</button>
+      </td>
+
+      <td><button *ngIf="item.Active == 'N'" (click)="onToggle(item)">Active</button>
+        <button *ngIf="item.Active == 'Y'" (click)="onToggle(item)">Inactive</button>
+      </td>
+
+    </tr>
+  </tbody>
+
+
+</table>

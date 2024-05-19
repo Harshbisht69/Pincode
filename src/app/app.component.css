@@ -1,0 +1,39 @@
+/* styles.css or your component's CSS file */
+
+header {
+  display: flex;
+  justify-content: flex-end;
+  /* Align buttons to the right */
+  padding: 10px;
+  /* Add padding for spacing */
+  background-color: #f0f0f0;
+  /* Add a background color */
+}
+
+header>div {
+  margin-left: auto;
+  /* Push buttons to the right */
+}
+
+button {
+  margin-left: 10px;
+  /* Add spacing between buttons */
+  padding: 5px 10px;
+  /* Add padding to buttons */
+  border: none;
+  background-color: #007bff;
+  /* Blue color for buttons */
+  color: #fff;
+  /* White text color */
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+  /* Darker blue color on hover */
+}
+
+a {
+  display: none;
+  /* Hide the empty link */
+}

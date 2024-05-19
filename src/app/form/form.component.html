@@ -1,0 +1,69 @@
+<form #formData="ngForm" (ngSubmit)="submitForm(formData.value)" class="cool-form">
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" class="form-control" id="name" name="name" [(ngModel)]="user.name" #name="ngModel" required
+      minlength="2">
+    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger">
+      <div *ngIf="name.errors?.['required']">Name is required.</div>
+      <div *ngIf="name.errors?.['minlength']">Name must be at least 2 characters long.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="age">Age:</label>
+    <input type="number" class="form-control" id="age" name="age" [(ngModel)]="user.age" #age="ngModel" required
+      min="1">
+    <div *ngIf="age.invalid && (age.dirty || age.touched)" class="text-danger">
+      <div *ngIf="age.errors?.['required']">Age is required.</div>
+      <div *ngIf="age.errors?.['min']">Age must be greater than 0.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Gender:</label><br>
+    <label>
+      <input type="radio" name="gender" value="male" [(ngModel)]="user.gender" required> Male
+    </label><br>
+    <label>
+      <input type="radio" name="gender" value="female" [(ngModel)]="user.gender" required> Female
+    </label><br>
+    <label>
+      <input type="radio" name="gender" value="other" [(ngModel)]="user.gender" required> Other
+    </label>
+    <div
+      *ngIf="formData.controls['gender']?.invalid && (formData.controls['gender']?.dirty || formData.controls['gender']?.touched)"
+      class="text-danger">
+      <div *ngIf="formData.controls['gender']?.errors?.['required']">Gender is required.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Hobby:</label><br>
+    <label>
+      <input type="checkbox" name="cooking" value="cooking" [checked]="user.hobby.includes('cooking')"> Cooking
+    </label><br>
+    <label>
+      <input type="checkbox" name="reading" value="reading" [checked]="user.hobby.includes('reading')"> Reading
+    </label><br>
+    <label>
+      <input type="checkbox" name="music" value="music" [checked]="user.hobby.includes('music')"> Music
+    </label>
+  </div>
+
+  <button type="button" (click)="addDropdown()">Add</button>
+  <app-pop-up *ngIf="showDropdown" (select)="handleDropdownChange($event)"></app-pop-up>
+
+  <div *ngIf="showPopup" class="popup-overlay">
+    <div class="popup">
+      <p>Selected State: {{ user.statename }}</p>
+      <p>Selected District: {{ user.districtname }}</p>
+      <p>Selected City: {{ user.cityname }}</p>
+      <p>Selected Pincode: {{ user.pincode }}</p>
+      <button type="button" class="close-popup" (click)="closePopup()">Close</button>
+    </div>
+  </div>
+
+  <div>
+    <button type="submit" class="btn btn-primary-two" [disabled]="formData.invalid">Save</button>
+  </div>
+</form>
