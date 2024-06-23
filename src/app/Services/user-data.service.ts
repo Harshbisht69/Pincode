@@ -17,6 +17,7 @@ export class UserDataService {
   userAddress: any;
   checkUpdate: boolean = false;
   checkDelete: boolean = false;
+  checkFormUpdate: boolean = false;
 
 
   getAddressData(type: string, id?: any): Observable<any> {
@@ -24,6 +25,7 @@ export class UserDataService {
   }
 
   saveAddressToDB(data: any): Observable<any> {
+    console.log(data)
     return this.http.post(this.saveurl, data);
   }
   getData(): Observable<any> {

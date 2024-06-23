@@ -1,42 +1,49 @@
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Age</th>
-      <th>Gender</th>
-      <th>Hobby</th>
-      <th>State Name</th>
-      <th>District Name</th>
-      <th>City Name</th>
-      <th>Pincode</th>
-      <th>Active</th>
-      <th>Update</th>
-
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of tableData">
-      <td>{{item.Id}}</td>
-      <td>{{item.Name}}</td>
-      <td>{{item.age}}</td>
-      <td>{{item.Gender}}</td>
-      <td>{{item.Hobby}}</td>
-      <td>{{item.StateName}}</td>
-      <td>{{item.DistrictName}}</td>
-      <td>{{item.CityName}}</td>
-      <td>{{item.Pincode}}</td>
-      <td>{{item.Active}}</td>
-
-      <td *ngIf="item.Active == 'Y'"><button (click)="onClick(item)">Update</button>
-      </td>
-
-      <td><button *ngIf="item.Active == 'N'" (click)="onToggle(item)">Active</button>
-        <button *ngIf="item.Active == 'Y'" (click)="onToggle(item)">Inactive</button>
-      </td>
-
-    </tr>
-  </tbody>
-
-
-</table>
+<div>
+  <table>
+    <thead class="bg-gray-50">
+      <tr>
+        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-lg font-bold">
+          Name</th>
+        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-lg font-bold">Age
+        </th>
+        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-lg font-bold">
+          Gender</th>
+        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-lg font-bold">
+          Hobbies</th>
+        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-lg font-bold">
+          State</th>
+        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-lg font-bold">
+          District</th>
+        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-lg font-bold">
+          City</th>
+        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-lg font-bold">
+          Pincode</th>
+        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-lg font-bold">
+          Active</th>
+        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-lg font-bold">
+          Update</th>
+      </tr>
+    </thead>
+    <tbody class="bg-white divide-y divide-gray-200">
+      <tr *ngFor="let item of tableData">
+        <td class="px-4 py-2 whitespace-nowrap">{{item.Name}}</td>
+        <td class="px-4 py-2 whitespace-nowrap">{{item.age}}</td>
+        <td class="px-4 py-2 whitespace-nowrap">{{item.Gender}}</td>
+        <td class="px-4 py-2 whitespace-nowrap">{{item.Hobby}}</td>
+        <td class="px-4 py-2 whitespace-nowrap">{{item.StateName}}</td>
+        <td class="px-4 py-2 whitespace-nowrap">{{item.DistrictName}}</td>
+        <td class="px-4 py-2 whitespace-nowrap">{{item.CityName}}</td>
+        <td class="px-4 py-2 whitespace-nowrap">{{item.Pincode}}</td>
+        <td class="px-4 py-2 whitespace-nowrap">{{item.Active}}</td>
+        <td class="px-4 py-2 whitespace-nowrap">
+          <button *ngIf="item.Active == 'Active'" (click)="onClick(item)"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">Update</button>
+          <button *ngIf="item.Active == 'Inactive'" (click)="onToggle(item)"
+            class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded">Active</button>
+          <button *ngIf="item.Active == 'Active'" (click)="onToggle(item)"
+            class="bg-red-500 hover:bg-red-300 text-white font-bold py-1 px-2 rounded">Inactive</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

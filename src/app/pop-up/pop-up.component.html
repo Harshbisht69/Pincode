@@ -1,25 +1,26 @@
-<div>
-  <select (change)="handleStateChange($event) " [(ngModel)]="selectedData.stateid">
-    <option value="0">Select State</option>
-    <option *ngFor="let state of states" [ngValue]="state.StateId"> {{state.StateName}} </option>
-  </select>
+<div class="fixed inset-0 z-50 overflow-auto bg-gray-800 bg-opacity-50 flex justify-center items-center">
+  <div class="bg-slate-300 w-full max-w-lg p-8 rounded-lg shadow-lg">
+    <select (change)="handleStateChange($event) " [(ngModel)]="selectedData.stateid">
+      <option value="0">Select State</option>
+      <option *ngFor="let state of states" [ngValue]="state.StateId"> {{state.StateName}} </option>
+    </select>
 
-  <select (change)="handleDistrictChange($event)" [(ngModel)]="selectedData.districtid">
-    <option value="0">Select District</option>
-    <option *ngFor="let district of districts" [ngValue]="district.DistrictId">{{district.DistrictName}}</option>
-  </select>
-
-
-  <select (change)="handleCityChange($event)" [(ngModel)]="selectedData.cityid">
-    <option value="0"> Select City</option>
-    <option *ngFor="let city of cities" [ngValue]="city.CityId">{{city.CityName}}
-    </option>
-  </select>
-
-  <select (change)="handlePincodeChange($event)" [(ngModel)]="selectedData.pincode">
-    <option value="0"> Select Pincode</option>
-    <option *ngFor="let pin of pincodes" [ngValue]="pin.pincode">{{pin.pincode}}</option>
-  </select>
+    <select (change)="handleDistrictChange($event)" [(ngModel)]="selectedData.districtid">
+      <option value="0">Select District</option>
+      <option *ngFor="let district of districts" [ngValue]="district.DistrictId">{{district.DistrictName}}</option>
+    </select>
 
 
+    <select (change)="handleCityChange($event)" [(ngModel)]="selectedData.cityid">
+      <option value="0"> Select City</option>
+      <option *ngFor="let city of cities" [ngValue]="city.CityId">{{city.CityName}}
+      </option>
+    </select>
+
+    <select (change)="handlePincodeChange($event)" [(ngModel)]="selectedData.pincode">
+      <option [value]="0"> Select Pincode</option>
+      <option *ngFor="let pin of pincodes" [ngValue]="pin.pincode">{{pin.pincode}}</option>
+    </select>
+    <button type="button" (click)="onPopUpClose()">Close</button>
+  </div>
 </div>

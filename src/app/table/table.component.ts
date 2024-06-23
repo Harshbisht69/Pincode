@@ -35,6 +35,7 @@ export class TableComponent {
   onClick(row: any) {
 
     this.userService.userAddress = row;
+    localStorage.setItem('rowData', row.Id)
     console.log(row)
     this.userService.checkUpdate = true;
     this.router.navigate([""])

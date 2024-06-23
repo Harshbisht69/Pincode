@@ -21,15 +21,9 @@
 
   <div class="form-group">
     <label>Gender:</label><br>
-    <label>
-      <input type="radio" name="gender" value="male" [(ngModel)]="user.gender" required> Male
-    </label><br>
-    <label>
-      <input type="radio" name="gender" value="female" [(ngModel)]="user.gender" required> Female
-    </label><br>
-    <label>
-      <input type="radio" name="gender" value="other" [(ngModel)]="user.gender" required> Other
-    </label>
+    <label><input type="radio" name="gender" value="male" [(ngModel)]="user.gender" required> Male</label><br>
+    <label><input type="radio" name="gender" value="female" [(ngModel)]="user.gender" required> Female</label><br>
+    <label><input type="radio" name="gender" value="other" [(ngModel)]="user.gender" required> Other</label>
     <div
       *ngIf="formData.controls['gender']?.invalid && (formData.controls['gender']?.dirty || formData.controls['gender']?.touched)"
       class="text-danger">
@@ -39,31 +33,30 @@
 
   <div class="form-group">
     <label>Hobby:</label><br>
-    <label>
-      <input type="checkbox" name="cooking" value="cooking" [checked]="user.hobby.includes('cooking')"> Cooking
-    </label><br>
-    <label>
-      <input type="checkbox" name="reading" value="reading" [checked]="user.hobby.includes('reading')"> Reading
-    </label><br>
-    <label>
-      <input type="checkbox" name="music" value="music" [checked]="user.hobby.includes('music')"> Music
-    </label>
+    <label><input type="checkbox" name="{{checkBoxOptions[0].value}}" value="cooking"
+        [(ngModel)]="checkBoxOptions[0].option" (change)="onCheckboxChange($event)"> Cooking</label><br>
+    <label><input type="checkbox" name="{{checkBoxOptions[1].value}}" value="reading"
+        [(ngModel)]="checkBoxOptions[1].option" (change)="onCheckboxChange($event)"> Reading</label><br>
+    <label><input type="checkbox" name="{{checkBoxOptions[2].value}}" value="music"
+        [(ngModel)]="checkBoxOptions[2].option" (change)="onCheckboxChange($event)"> Music</label>
   </div>
 
-  <button type="button" (click)="addDropdown()">Add</button>
-  <app-pop-up *ngIf="showDropdown" (select)="handleDropdownChange($event)"></app-pop-up>
+  <button type="button" (click)="addDropdown()"
+    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    {{ updateFlag ? 'Update' : 'Add' }}
+  </button>
+  <app-pop-up *ngIf="showChild" (select)="handleDropdownChange($event)" (close)="onClose()"></app-pop-up>
 
-  <div *ngIf="showPopup" class="popup-overlay">
+  <div *ngIf="showPopup">
     <div class="popup">
       <p>Selected State: {{ user.statename }}</p>
       <p>Selected District: {{ user.districtname }}</p>
       <p>Selected City: {{ user.cityname }}</p>
       <p>Selected Pincode: {{ user.pincode }}</p>
-      <button type="button" class="close-popup" (click)="closePopup()">Close</button>
     </div>
   </div>
 
   <div>
-    <button type="submit" class="btn btn-primary-two" [disabled]="formData.invalid">Save</button>
+    <button type="submit" class="btn btn-primary-two">Save</button>
   </div>
 </form>

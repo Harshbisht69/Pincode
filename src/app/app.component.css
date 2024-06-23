@@ -1,7 +1,6 @@
-/* styles.css or your component's CSS file */
+.header-class {
 
-header {
-  display: flex;
+  top: 0%;
   justify-content: flex-end;
   /* Align buttons to the right */
   padding: 10px;
@@ -10,10 +9,7 @@ header {
   /* Add a background color */
 }
 
-header>div {
-  margin-left: auto;
-  /* Push buttons to the right */
-}
+
 
 button {
   margin-left: 10px;

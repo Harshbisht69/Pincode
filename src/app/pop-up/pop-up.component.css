@@ -1,0 +1,88 @@
+select {
+  padding: 10px;
+  /* Add padding for better spacing */
+  border: 1px solid #ccc;
+  /* Add a border for clarity */
+  border-radius: 5px;
+  /* Rounded corners for a softer look */
+  background-color: #f5f5f5;
+  /* Light gray background */
+  color: #333;
+  /* Darker text color for better readability */
+  font-size: 16px;
+  /* Medium font size */
+  width: 200px;
+  /* Adjust width as needed */
+  margin-right: 10px;
+  /* Add margin between select elements */
+}
+
+select:hover {
+  border-color: #999;
+  /* Darker border color on hover for interactive effect */
+}
+
+select:focus {
+  outline: none;
+  /* Remove outline on focus for cleaner appearance */
+  border-color: #66afe9;
+  /* Highlight border color on focus */
+}
+
+option {
+  background-color: #fff;
+  /* White background for options */
+  color: #333;
+  /* Darker text color for options */
+}
+
+option:hover {
+  background-color: #f0f0f0;
+  /* Light gray background on hover */
+}
+
+
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.6);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+
+  backdrop-filter: blur(5px);
+}
+
+.popup {
+  background-color: #fff;
+
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 600px;
+
+}
+
+.popup select {
+  width: 100%;
+
+}
+
+.popup button.close-popup {
+  padding: 5px 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  background-color: #f44336;
+  border: none;
+  border-radius: 5px;
+  color: white;
+}

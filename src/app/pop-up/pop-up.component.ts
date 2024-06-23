@@ -15,12 +15,12 @@ export class PopUpComponent implements OnInit {
 
   selectedData = {
     state: '',
-    district: null,
-    city: null,
-    pincode: null,
+    district: '',
+    city: '',
+    pincode: 0,
     stateid: 0,
-    districtid: null,
-    cityid: null,
+    districtid: 0,
+    cityid: 0,
   };
 
   @Output() select = new EventEmitter<{ state: any, district: any, city: any, pincode: any }>();
@@ -30,15 +30,18 @@ export class PopUpComponent implements OnInit {
 
   ngOnInit() {
 
+
     this.userDataService.getAddressData('state').subscribe({
       next: (response: any) => {
-
+        console.log(response)
         let address = JSON.parse(response.value);
+        console.log(address)
         this.states = address.dataSet.Table;
+        console.log(this.userDataService.userAddress, 'sdfsdkfjskd');
 
 
 
-        if (this.userDataService.userAddress.StateId) {
+        if (this.userDataService.userAddress && this.userDataService.userAddress.StateId) {
           this.selectedData.stateid = this.userDataService.userAddress.StateId;
           this.handleStateChange(this.selectedData.stateid);
           this.selectedData.districtid = this.userDataService.userAddress.DistrictId;
@@ -67,6 +70,8 @@ export class PopUpComponent implements OnInit {
     if (foundState) {
       this.selectedData.state = foundState.StateName;
       this.selectedData.stateid = stateID;
+      this.selectedData.pincode = 0;
+      this.selectedData.districtid = 0;
 
     }
 
@@ -77,6 +82,7 @@ export class PopUpComponent implements OnInit {
           this.districts = address.dataSet.Table;
           this.cities = [];
           this.pincodes = [];
+
         }
       });
     }
@@ -129,6 +135,8 @@ export class PopUpComponent implements OnInit {
     const pincodeID = this.selectedData.pincode;
     this.select.emit(this.selectedData);
   }
-
+  onPopUpClose() {
+    this.close.emit();
+  }
 
 }
